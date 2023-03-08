@@ -1,15 +1,24 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div id="app">
+    <!--
+    <img alt="Vue logo" src="./assets/logo.png">
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    -->
+    <SdpTable ></SdpTable>
+     <elIcons ></elIcons>
+  </div>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
 
+
+<script>
+import SdpTable from "./components/SdpTable.vue"
+import elIcons from "@/components/elIcons"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SdpTable,
+    elIcons
   }
 }
 </script>
@@ -23,4 +32,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
 </style>
