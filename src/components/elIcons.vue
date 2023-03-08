@@ -1,10 +1,5 @@
 <template>
-  <p>
-    with extra class <b>is-loading</b>, your icon is able to rotate 360 deg in 2
-    seconds, you can also override this
-  </p>
   <el-container>
-    <el-main>
   <el-icon size="20">
     <Edit />
   </el-icon>
@@ -23,7 +18,6 @@
     </el-icon>
     <span style="vertical-align: middle"> Search </span>
   </el-button>
-    </el-main>
   </el-container>
 </template>
 
@@ -33,8 +27,15 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.el-container{
+  position: relative;
+  background-color: var(--el-color-primary-light-7);
+}
+.el-icon{
+  margin: auto;
+  padding: 0;
+}
 
 
 </style>

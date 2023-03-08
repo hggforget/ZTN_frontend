@@ -4,21 +4,20 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     -->
-    <SdpTable ></SdpTable>
-     <elIcons ></elIcons>
+    <AsideMenu> </AsideMenu>
+
   </div>
 </template>
 
 
 
 <script>
-import SdpTable from "./components/SdpTable.vue"
-import elIcons from "@/components/elIcons"
+import AsideMenu from "@/components/AsideMenu"
+
 export default {
   name: 'App',
   components: {
-    SdpTable,
-    elIcons
+    AsideMenu
   }
 }
 </script>
@@ -30,7 +29,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 
 </style>
