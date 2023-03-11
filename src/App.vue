@@ -5,7 +5,6 @@
     <HelloWorld msg="Welcome to Your Vue.js App"/>
     -->
     <AsideMenu> </AsideMenu>
-
   </div>
 </template>
 
@@ -17,7 +16,7 @@ import AsideMenu from "@/components/AsideMenu"
 export default {
   name: 'App',
   components: {
-    AsideMenu
+    AsideMenu,
   }
 }
 </script>
