@@ -59,7 +59,7 @@
     </el-container>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="dialogFormVisible = false">Cancel</el-button>
+        <el-button @click="test">Cancel</el-button>
         <el-button type="primary" @click="EditSdpsubmit">
           Confirm
         </el-button>
@@ -121,6 +121,12 @@ const rules = {
         valid:[{ required: true,message: "请输入合法性" , trigger: 'blur'}],
         serial:[{ required: true,message: "请输入是否序列化" , trigger: 'blur'}],
       }
+
+const test =()=>{
+    console.log(form.country)
+    console.log(form)
+    dialogFormVisible.value = false
+}
 
 const baseForm=ref<FormInstance>()
 const EditSdpsubmit =()=> {

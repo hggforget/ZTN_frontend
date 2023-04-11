@@ -3,7 +3,7 @@
     <el-container>
       
       <AsideMenu></AsideMenu>
-      
+      <RouterView></RouterView>
     </el-container>
     <el-footer style="margin-bottom: 0px">
       <elIcons ></elIcons>

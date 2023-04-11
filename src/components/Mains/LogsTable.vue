@@ -52,9 +52,14 @@
 
 <script lang="ts" setup>
 
-import {ElMessage} from "element-plus";
+import {ElMessage, rowProps} from "element-plus";
 import {getLogs} from "@/api/api";
-import { reactive } from "vue";
+import { reactive, ref } from "vue";
+import { useRouter } from 'vue-router'
+import {useLogStore} from '@/stores/Logs'
+import { storeToRefs } from "pinia";
+//首先在setup中定义
+const router = useRouter()
 
 
 
@@ -72,8 +77,16 @@ const tableRowClassName =({row, rowIndex})=> {
     //每页条数改变时触发 选择一页显示多少行
 const rowdbclicked =(row)=> {
         console.log(`第 ${row.id} 个条目被双击 跳转至详细信息`);
-        console.log(row.row_index);
-
+        const store = useLogStore();
+        store.$patch({
+          id: row.id,
+          sdpid: row.sdpid,
+          action:row.action,
+          upload_date:row.upload_date,
+          data:row.data
+        });
+        console.log(store.action)
+        router.push('/LogDetails')
     }
 const handleSizeChange =(val)=> {
       console.log(`每页 ${val} 条`);

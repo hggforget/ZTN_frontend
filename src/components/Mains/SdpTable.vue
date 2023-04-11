@@ -99,6 +99,8 @@ import {DelSdp, getSdps} from '@/api/api'
 import AddDialog from "@/components/Dialog/AddDialog.vue"
 import EditDialog from "@/components/Dialog/EditDialog.vue"
 import {ElMessage} from "element-plus";
+import { rowKey } from "element-plus/es/components/table-v2/src/common";
+import { forEach } from "lodash";
 import { onMounted, reactive, ref } from "vue";
 
 const state = reactive({
@@ -123,14 +125,12 @@ const loadSdps =()=> {
         console.log(response.data.Sdps)
       })
     }
-  onMounted(() => {
-    console.log(myEditDialog.value); // Proxy {…}
-    
-});
 const handleEdit =(index,row)=> {
       console.log(index, row)
-      console.log(myEditDialog.value.form)
-      myEditDialog.value.form = row
+      let rowdata=JSON.parse(JSON.stringify(row))
+      for(var key in rowdata){
+        myEditDialog.value.form[key]=rowdata[key]
+      }
       console.log(myEditDialog.value.dialogFormVisible)
       myEditDialog.value.dialogFormVisible = true
     }
