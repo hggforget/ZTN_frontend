@@ -3,6 +3,7 @@
 
     <el-main>
       <el-scrollbar>
+
         <el-table
             :row-class-name="tableRowClassName"
             @row-dblclick="rowdbclicked"
