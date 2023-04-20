@@ -1,5 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import  'echarts'
+import Echarts from 'vue-echarts'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import App from './App.vue'
@@ -19,4 +21,5 @@ app.use(JsonViewer)
   for (const [key, component] of Object.entries(ElIcons)) {
     app.component(key, component)
   }
+app.component('v-chart',Echarts)
 app.mount('#app')

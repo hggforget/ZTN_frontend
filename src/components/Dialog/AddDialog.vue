@@ -122,6 +122,7 @@ const rules = {
         valid:[{ required: true,message: "请输入合法性" , trigger: 'blur'}],
         serial:[{ required: true,message: "请输入是否序列化" , trigger: 'blur'}],
       }
+const emit =defineEmits(['refresh'])
 const baseForm=ref<FormInstance>()
 const RegSdpsubmit =()=> {
       console.log(form);
@@ -130,7 +131,10 @@ const RegSdpsubmit =()=> {
       for (var key in form) {
         formData.append(key, form[key]);
       }
-      RegSdp(formData,this);
+      RegSdp(formData);
+      setTimeout(()=>{
+          emit('refresh')
+      },1000)
       dialogFormVisible.value = false;
     }
     

@@ -3,9 +3,11 @@ import HomeView from '../views/HomeView.vue'
 import SdpTable from '@/components/Mains/SdpTable.vue';
 import VMmanager from "@/components/Mains/VMmanager.vue";
 import ZTNCmanager from "@/components/Mains/ZNTCmanager.vue";
-import LogsTable from "@/components/Mains/LogsTable.vue";
+import LogTable from "@/components/LogPages/LogTable.vue";
 import LogDetails from "@/components/Mains/LogDetails.vue";
 import MainBlockVue from '@/components/MainBlock.vue';
+import LogStatisticVue from '@/components/LogPages/LogStatistic.vue';
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,8 +24,9 @@ const router = createRouter({
     { path: '/SdpTable', component: SdpTable},
     { path: '/VMmanager', component: VMmanager},
     { path: '/ZTNCmanager', component: ZTNCmanager},
-    { path: '/LogsTable', component: LogsTable},
-    { path: '/LogDetails', component: LogDetails}
+    { path: '/LogTable', component: LogTable},
+    { path: '/LogDetails', component: LogDetails},
+    { path: '/LogPage', component:LogStatisticVue}
   ]
 })
 

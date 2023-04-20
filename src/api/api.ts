@@ -6,7 +6,7 @@ const axios = axiosInstance
 export const getSdps = () => {return axios.get(`http://localhost:8000/querySdps/`)}
 export const getLogs = () => {return axios.get(`http://localhost:8000/queryLogs/`)}
 export const getComponents = () => {return axios.get(`http://localhost:8000/queryComponents/`)}
-export const RegSdp =(formData,array) => {
+export const RegSdp =(formData) => {
     {
         axios({
             method:"post",
@@ -18,11 +18,10 @@ export const RegSdp =(formData,array) => {
             data:formData
         }).then((res)=>{
             console.log(res);
-            array.$emit('refresh');
         });
     }
 }
-export const DelSdp =(sdpid,array) => {
+export const DelSdp =(sdpid) => {
     {
         axios({
             method:"post",
@@ -36,11 +35,10 @@ export const DelSdp =(sdpid,array) => {
             }
         }).then((res)=>{
             console.log(res);
-            array.loadSdps();
         });
     }
 }
-export const EditSdp =(formData,array) => {
+export const EditSdp =(formData) => {
     {
         axios({
             method:"post",
@@ -52,7 +50,6 @@ export const EditSdp =(formData,array) => {
             data:formData
         }).then((res)=>{
             console.log(res);
-            array.$emit('refresh');
         });
     }
 }

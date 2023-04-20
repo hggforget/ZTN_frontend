@@ -59,7 +59,7 @@
     </el-container>
     <template #footer>
       <span class="dialog-footer">
-        <el-button @click="test">Cancel</el-button>
+        <el-button @click="close">Cancel</el-button>
         <el-button type="primary" @click="EditSdpsubmit">
           Confirm
         </el-button>
@@ -93,21 +93,12 @@
 import { reactive, ref } from 'vue'
 import {EditSdp} from "@/api/api";
 import { ElMessage, type FormInstance } from 'element-plus';
-const dialogFormVisible=ref(false)
+import { useEditDialogStore } from '@/stores/EditDialog';
+import { storeToRefs } from 'pinia';
+const store = useEditDialogStore();
+const {dialogFormVisible,form} = storeToRefs(store)
+console.log(form,'sdadsd')
 const formLabelWidth = '140px'
-const form = reactive({
-        name: '',
-        country: '',
-        state: '',
-        locality: '',
-        org: '',
-        type: '',
-        org_unit: '',
-        alt_name: '',
-        email: '',
-        valid: '',
-        serial: ''
-      })
 const rules = {
         name:[{ required: true,message: "请输入组件名称" , trigger: 'blur'}],
         country:[{ required: true,message: "请输入国家" , trigger: 'blur'}],
@@ -122,21 +113,22 @@ const rules = {
         serial:[{ required: true,message: "请输入是否序列化" , trigger: 'blur'}],
       }
 
-const test =()=>{
-    console.log(form.country)
-    console.log(form)
+const close =()=>{
     dialogFormVisible.value = false
 }
-
+const emit =defineEmits(['refresh'])
 const baseForm=ref<FormInstance>()
 const EditSdpsubmit =()=> {
-      console.log(form);
+      console.log(form.value);
       confirmOperation();
       let formData = new FormData();
-      for (var key in form) {
-        formData.append(key, form[key]);
+      for (var key in form.value) {
+        formData.append(key, form.value[key]);
       }
-      EditSdp(formData,this);
+      EditSdp(formData);
+      setTimeout(()=>{
+          emit('refresh')
+      },1000)
       dialogFormVisible.value = false;
     }
 const confirmOperation =()=> {
@@ -151,9 +143,5 @@ const confirmOperation =()=> {
         // operation code
       })
     }
-    defineExpose({
-      dialogFormVisible,
-      form,
-    })
 </script>
 

@@ -63,7 +63,7 @@ const VMmLoad =() => {
         router.push("/VMmanager")
       }
 const LogsTableLoad =() => {
-        router.push("/LogsTable")
+        router.push("/LogPage")
       }
 const LogDetailLoad =() => {
         router.push("/LogDetails")

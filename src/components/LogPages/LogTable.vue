@@ -1,4 +1,5 @@
 <template>
+  
   <el-container>
 
     <el-main>
@@ -12,22 +13,8 @@
             stripe
             style="width: 100%">
           <el-table-column type="selection" width="40" />
-          <el-table-column
-              prop="id"
-              label="id"
-              sortable>
-          </el-table-column>
-          <el-table-column
-              prop="sdpid"
-              label="sdpid">
-          </el-table-column>
-          <el-table-column
-              prop="action"
-              label="action">
-          </el-table-column>
-          <el-table-column
-              prop="upload_date"
-              label="upload_date">
+          <el-table-column v-for="Config in tableConfig" :label=Config.label :prop=Config.prop>
+
           </el-table-column>
           <el-table-column label="Operations">
 
@@ -61,7 +48,26 @@ import {useLogStore} from '@/stores/Logs'
 import { storeToRefs } from "pinia";
 //首先在setup中定义
 const router = useRouter()
+// table配置
+const tableConfig = [
+        {
+          label :"LogID" ,
+          prop :"id" ,
+        },
+        {
+          label:"SdpID" ,
+          prop:"sdpid",
+        },
+        {
+          label: "action",
+          prop: "action",
+        },
 
+        {
+          label: "upload_date",
+          prop: "upload_date",
+        },
+      ]
 
 
 const state = reactive({

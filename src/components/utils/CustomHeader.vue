@@ -80,7 +80,7 @@
           oncontextmenu="return false"
           class="label"
           :class="{ labelColor: labelColorList.includes(item.prop) }"
-          >{{ column.label }} &nbsp;<i class="el-icon-arrow-down"></i>
+          >{{ item.label }} &nbsp;<i class="el-icon-arrow-down"></i>
         </span>
     </template> 
       </el-popover>
@@ -89,12 +89,12 @@
   <script lang="ts" setup>
   import { ElMessage } from 'element-plus';
 import { reactive, ref,defineEmits } from 'vue';
+import type { tableConfig_prop } from './interfaces';
 const emit = defineEmits(['tableUpdate'])
 type Props = {
-        column : any,
-        item :any,
+        item :tableConfig_prop,
         customParams:any,
-        labelColorList:any
+        labelColorList:String[]
     }
     const popover = ref()
     // column 当前列数据，tableConfig 内数据，customParams 下拉框数据， labelColorList 正在使用的筛选条件
@@ -119,8 +119,9 @@ type Props = {
           conditionType: item.conditionType, 
         });
       }
-      const selectList =(data)=>{
+      const selectList =(data:tableConfig_prop)=>{
     
+        if (data.conditionListName)
         return props.customParams[data.conditionListName];
 
     }

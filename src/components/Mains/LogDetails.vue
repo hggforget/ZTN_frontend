@@ -17,7 +17,8 @@
   -->
 </template>
 
-<script lang="ts" setup>import { useLogStore } from '@/stores/Logs';
+<script lang="ts" setup>
+import { useLogStore } from '@/stores/Logs';
 import jsonView from 'vue-json-views'
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';

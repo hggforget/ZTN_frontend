@@ -71,19 +71,7 @@
               prop="email"
               label="email">
           </el-table-column>
-          <el-table-column label="Operations">
-            <template #default="scope">
-              <el-button size="small" @click="handleEdit(scope.$index, scope.row)"
-              >Edit</el-button
-              >
-              <el-button
-                  size="small"
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)"
-              >Delete</el-button
-              >
-            </template>
-          </el-table-column>
+          <SDPOperationCol @refresh="loadSdps"></SDPOperationCol>
         </el-table>
       </el-scrollbar>
     </el-main>
@@ -99,9 +87,8 @@ import {DelSdp, getSdps} from '@/api/api'
 import AddDialog from "@/components/Dialog/AddDialog.vue"
 import EditDialog from "@/components/Dialog/EditDialog.vue"
 import {ElMessage} from "element-plus";
-import { rowKey } from "element-plus/es/components/table-v2/src/common";
-import { forEach } from "lodash";
 import { onMounted, reactive, ref } from "vue";
+import SDPOperationCol from "../utils/SDPOperationCol.vue";
 
 const state = reactive({
     sdps : []
@@ -125,21 +112,8 @@ const loadSdps =()=> {
         console.log(response.data.Sdps)
       })
     }
-const handleEdit =(index,row)=> {
-      console.log(index, row)
-      let rowdata=JSON.parse(JSON.stringify(row))
-      for(var key in rowdata){
-        myEditDialog.value.form[key]=rowdata[key]
-      }
-      console.log(myEditDialog.value.dialogFormVisible)
-      myEditDialog.value.dialogFormVisible = true
-    }
 
-const handleDelete =(index,row)=> {
-      console.log(index, row)
-      console.log(row.sdpid)
-      DelSdp(row.sdpid,this)
-    }
+
   
     loadSdps()
 
