@@ -1,12 +1,14 @@
 {
   "extends": "@vue/tsconfig/tsconfig.web.json",
-  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue","*.json"],
   "exclude": ["src/**/__tests__/*"],
   "compilerOptions": {
     "noImplicitThis": false,
     "noImplicitAny": false,
     "allowJs": true,
     "composite": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
